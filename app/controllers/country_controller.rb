@@ -1,0 +1,3 @@
+class CountryController < ApplicationController
+
+end
