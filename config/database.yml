@@ -1,0 +1,15 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: atlas
+  pool: 2
+  username: oski
+  password: Postgres123
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: atlas
+  pool: 2
+  username: oski
+  password: Postgres123
