@@ -39,6 +39,10 @@ h1.shadow{
   text-shadow: 0 0 50px #1c9e6c;
 }
 
+#room{
+  margin-top: 55px;
+}
+
 .bg-primary {
   background-color: #F05F40 !important; }
 

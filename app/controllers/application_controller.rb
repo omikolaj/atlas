@@ -6,7 +6,7 @@ class ApplicationController < Sinatra::Base
     set :public_folder, 'public'
     set :views, 'app/views'
     enable :sessions
-    set :session_secert, "Jestem_Bogiem"
+    set :session_secret, "JestemBogiem"
   end
 
   get "/" do
@@ -24,13 +24,19 @@ class ApplicationController < Sinatra::Base
     end
 
     def login(email)
-      binding.pry
       if user = User.find_by(:email => email)
+
         session[:user_id] = user.id
       else
+
         redirect '/login'
       end
     end
+
+    def logout!
+      session.clear
+    end
+
   end
 
 end
