@@ -2,6 +2,7 @@ class UserController  < ApplicationController
 
 
     get '/profiles/:slug' do
+        binding.pry
         if logged_in?
             @user = current_user
             erb :"user/profile"
@@ -11,6 +12,7 @@ class UserController  < ApplicationController
     end
 
     get '/logout' do
+        binding.pry
         logout!
         redirect "/login"
     end
