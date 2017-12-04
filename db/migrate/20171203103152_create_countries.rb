@@ -11,13 +11,14 @@ class CreateCountries < ActiveRecord::Migration
       t.string :subregion
       t.string :demonym
       t.float :area
-      t.string :timezone
+      t.string :timezones
       t.string :borders
-      t.string :nativename
+      t.string :nativeName
       t.string :currency_name
       t.string :currency_symbol
+      t.string :native_lang_name
       t.string :language_name
-      t.string :flag
+      t.string :flag_path
     end
   end
 end

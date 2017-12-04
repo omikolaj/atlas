@@ -10,18 +10,52 @@ class Country < ActiveRecord::Base
         @@matches.empty? ? Country.worker : @@matches
     end
 
+
     def self.mis
         @@mis
     end
 
+    def self.create_from_api_data(name)
+        path = "https://restcountries.eu/rest/v2/name/#{name}"
+        data = JSON.parse(RestClient.get(path, headers={}))
+        country = self.new
+        binding.pry
+        country.name = name
+        country.topLevelDomain = data[0]["topLevelDomain"]
+        country.alpha2Code = data[0]["alpha2Code"]
+        country.alpha3Code = data[0]["alpha3Code"]
+        country.callingCodes = data[0]["callingCodes"]
+        country.capital = data[0]["capital"]
+        country.region = data[0]["region"]
+        country.subregion = data[0]["subregion"]
+        country.demonym = data[0]["demonym"]
+        country.area = data[0]["area"]
+        country.timezones = data[0]["timezones"]
+        country.borders = data[0]["borders"]
+        country.nativeName = data[0]["nativeName"]
+        country.currency_name = data[0]["nativeName"]
+        country.currency_symbol = data[0]["currencies"][0]["symbol"]
+        country.native_lang_name = data[0]["languages"][0]["nativeName"]
+        country.lange_name = data[0]["languages"][0]["name"]
+    end
+
     def self.create_flag_country_hash
         country_flags = {}
-        Country.matches.map{|country_name| country_flags[:"#{country_name}"] = "public/img/flags/#{country_name}.svg"} 
+        Country.matches.map{|country_name| country_flags[:"#{country_name}"] = "public/img/flags/#{country_name}.svg"}
     end
+
 
     def self.country_names
         path = "public/img/flags/"
         flags ||= Dir.glob("#{path}*.svg").collect{|flag| flag.gsub("#{path}","").gsub(".svg", "")}
+    end
+
+    def slug 
+        name.downcase.gsub(" ","-")
+    end
+    
+    def self.find_by_slug(slug)
+        Country.all.find{|country| country.slug == slug}
     end
 
     private

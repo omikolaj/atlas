@@ -8,4 +8,14 @@ class CountryController < ApplicationController
             redirect '/login'
         end
     end
+
+    get '/countries/:country' do
+        if logged_in?
+            @country = Country.create_from_api_data(params["country"])
+            erb :"country/show"
+        else
+            redirect '/login'
+        end
+    end
+
 end
