@@ -630,6 +630,7 @@ MagnificPopup.prototype = {
 			}
 		}
 	},
+
 	_openClick: function(e, el, options) {
 		var midClick = options.midClick !== undefined ? options.midClick : $.magnificPopup.defaults.midClick;
 

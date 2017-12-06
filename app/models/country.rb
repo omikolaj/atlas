@@ -16,10 +16,11 @@ class Country < ActiveRecord::Base
     end
 
     def self.create_from_api_data(name)
-        path = "https://restcountries.eu/rest/v2/name/#{name}"
-        data = JSON.parse(RestClient.get(path, headers={}))
-        country = self.new
         binding.pry
+        path = "https://restcountries.eu/rest/v2/name/#{name}?fullText=true"
+        encoded = URI.encode(path)
+        data = JSON.parse(RestClient.get(encoded, headers={}))
+        country = Country.create
         country.name = name
         country.topLevelDomain = data[0]["topLevelDomain"]
         country.alpha2Code = data[0]["alpha2Code"]
@@ -36,7 +37,14 @@ class Country < ActiveRecord::Base
         country.currency_name = data[0]["nativeName"]
         country.currency_symbol = data[0]["currencies"][0]["symbol"]
         country.native_lang_name = data[0]["languages"][0]["nativeName"]
-        country.lange_name = data[0]["languages"][0]["name"]
+        country.language_name = data[0]["languages"][0]["name"]
+        country.save
+        country
+    end
+
+    def self.find_or_create_from_api(name)
+        #binding.pry
+        find_by(name: name) || create_from_api_data(name)
     end
 
     def self.create_flag_country_hash

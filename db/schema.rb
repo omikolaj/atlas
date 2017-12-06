@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20171203103200) do
     t.string  "name"
     t.string  "topLevelDomain"
     t.string  "alpha2Code"
-    t.string  "alpha3code"
+    t.string  "alpha3Code"
     t.integer "callingCodes"
     t.string  "capital"
     t.string  "region"

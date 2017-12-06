@@ -4,7 +4,7 @@ class CreateCountries < ActiveRecord::Migration
       t.string :name
       t.string :topLevelDomain
       t.string :alpha2Code
-      t.string :alpha3code
+      t.string :alpha3Code
       t.integer :callingCodes
       t.string :capital
       t.string :region
