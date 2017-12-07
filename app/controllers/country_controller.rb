@@ -2,7 +2,7 @@ class CountryController < ApplicationController
 
     get '/countries' do
         if logged_in?
-            @flags ||= Country.country_names
+            @flags ||= Country.matches
             erb :"country/countries"
         else
             redirect '/login'

@@ -16,10 +16,8 @@ class Country < ActiveRecord::Base
     end
 
     def self.create_from_api_data(name)
-        binding.pry
-        path = "https://restcountries.eu/rest/v2/name/#{name}?fullText=true"
-        encoded = URI.encode(path)
-        data = JSON.parse(RestClient.get(encoded, headers={}))
+        path = URI.encode("https://restcountries.eu/rest/v2/name/#{name}?fullText=true")
+        data = JSON.parse(RestClient.get(path, headers={}))
         country = Country.create
         country.name = name
         country.topLevelDomain = data[0]["topLevelDomain"]
@@ -43,7 +41,6 @@ class Country < ActiveRecord::Base
     end
 
     def self.find_or_create_from_api(name)
-        #binding.pry
         find_by(name: name) || create_from_api_data(name)
     end
 
@@ -75,13 +72,12 @@ class Country < ActiveRecord::Base
     
 
     def self.filter
-        Country.country_names.each{|country| Country.matches?(country) ? @@matches << country : @@mis << country}       
+        Country.country_names.each{|country| Country.matches?(country) ? @@matches << country : @@mis << country}
     end
-    
 
     def self.worker
         Country.filter
-        @@matches
+        @@matches.sort{|a,b| a<=>b}
     end
     
 
