@@ -6,9 +6,15 @@ class User < ActiveRecord::Base
     validates :email, presence: true, uniqueness: { case_sensitive: false }
     validates :password, presence: true
 
+
+
+    def add_country_to_dashboard(id)
+        binding.pry
+    end
+
     def slug 
         username.downcase.gsub(" ","-")
-      end
+    end
     
     def self.find_by_slug(slug)
         User.all.find{|user| user.slug == slug}

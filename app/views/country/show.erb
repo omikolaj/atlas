@@ -52,17 +52,17 @@
           <div class="col-lg-3 col-md-6 text-center">
             <div class="service-box mt-5 mx-auto">
               <i class="fa fa-4x fa-clock-o text-primary mb-3 sr-icons"></i>
-              <h3 class="mb-3">Alpha Code 2</h3>
-              <p class="text-muted mb-0"><%=@country.alpha2Code%></p>
+              <h3 class="mb-3">Alpha Codes</h3>
+              <p class="text-muted mb-0"><%=@country.alpha2Code%><br><%=@country.alpha3Code%></p>
             </div>
           </div>
           <div class="col-lg-3 col-md-6 text-center">
             <div class="service-box mt-5 mx-auto">
-              <i class="fa fa-4x fa-money text-primary mb-3 sr-icons"></i>
-              <h3 class="mb-3">Alpha Code 2</h3>
-              <p class="text-muted mb-0"><%=@country.alpha3Code%></p>
+              <i class="fa fa-4x fa-building-o text-primary mb-3 sr-icons"></i>
+              <h3 class="mb-3">Language Name</h3>
+              <p class="text-muted mb-0"><%=@country.language_name%></p>
             </div>
-          </div>
+          </div>      
           <div class="col-lg-3 col-md-6 text-center">
             <div class="service-box mt-5 mx-auto">
               <i class="fa fa-4x fa-globe text-primary mb-3 sr-icons"></i>
@@ -139,16 +139,11 @@
         </div>        
       </div>
 
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12 col-md-6 text-center">
-            <div class="service-box mt-5 mx-auto">
-              <i class="fa fa-4x fa-building-o text-primary mb-3 sr-icons"></i>
-              <h3 class="mb-3">Language Name</h3>
-              <p class="text-muted mb-0"><%=@country.language_name%></p>
-            </div>
-          </div>
-        </div>        
+  <br>
+    <form method="post" action="/dashboards/<%=@current_user.slug%>/<%=@country.id%>">
+      <div class ="col-lg-12 col-md-6 text-center">
+        <input type="submit" value="Add to Favorites">
       </div>
+    </form>
 
     </section>
