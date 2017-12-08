@@ -36,6 +36,7 @@ class Country < ActiveRecord::Base
         country.currency_symbol = data[0]["currencies"][0]["symbol"]
         country.native_lang_name = data[0]["languages"][0]["nativeName"]
         country.language_name = data[0]["languages"][0]["name"]
+        country.flag_path = data[0]["flag"]
         country.save
         country
     end

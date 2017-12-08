@@ -1,5 +1,5 @@
 <form method="post" action="/dashboards/<%=@user.slug%>">
-<form type="hidden" name="_method" value="patch">
+<input type="hidden" name="_method" value="patch">
 <br><br>
 
 <div class="container">
@@ -8,7 +8,7 @@
             <label for="username">Username: </label>
             <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></span>
-                    <input type="text" class="form-control" id="username" placeholder="Username" name="username">
+                    <input type="text" class="form-control" id="username" placeholder="Username" name="username" value="<%=@user.username%>">
             </div>
         </div>
     </div>
@@ -20,7 +20,7 @@
             <label for="email">Email: </label>
             <div class="input-group">
                 <span class="input-group-addon">@</span>
-                    <input type="email" class="form-control" id="email" placeholder="Email" name="email">
+                    <input type="email" class="form-control" id="email" placeholder="Email" name="email" value="<%=@user.email%>">
             </div>
         </div>
     </div>
@@ -42,7 +42,10 @@
     <div class="col-xs- col-xs-offset-6">
         <br>
             <button type="submit" class="btn btn-primary">Update</button>
-            <button type="submit" class="btn btn-primary">Cancel</button>
+</form> 
+        <form action="/dashboards/<%=@user.slug%>" method = "get">
+            <button type="submit" class="btn btn-primary">Cancel</button></a>
+        </form>
+
     </div>
 </div>
-</form>  

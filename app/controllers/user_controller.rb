@@ -21,7 +21,7 @@ class UserController  < ApplicationController
     patch '/dashboards/:slug' do
         if logged_in?
             @user = current_user
-            
+            @user.update(:username => params["username"], :email => params["email"], :password => params["password"])
             redirect "/dashboards/#{@user.slug}"
         else
             redirect '/login'
