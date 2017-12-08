@@ -1,11 +1,28 @@
 class UserController  < ApplicationController
 
-
     get '/dashboards/:slug' do
-        binding.pry
         if logged_in?
             @user = current_user
             erb :"user/profile"
+        else
+            redirect '/login'
+        end
+    end
+
+    get '/dashboards/:slug/edit' do
+        if logged_in?
+            @user = current_user
+            erb :'user/edit'
+        else
+            redirect '/login'
+        end
+    end
+
+    patch '/dashboards/:slug' do
+        if logged_in?
+            @user = current_user
+            
+            redirect "/dashboards/#{@user.slug}"
         else
             redirect '/login'
         end
@@ -16,14 +33,16 @@ class UserController  < ApplicationController
         redirect "/login"
     end
 
-
-
     post '/dashboards/:user_slug/:country_id' do
         if logged_in?
             @user = User.find_by_slug(params["user_slug"])
-            binding.pry
-            @user.add_country_to_dashboard(params["country_id"])
-            redirect "/dashboards/#{@user.slug}"
+            begin 
+                @user.countries << Country.find_by_id(params["country_id"])
+                redirect "/dashboards/#{@user.slug}"
+            rescue
+                flash[:info] = "<strong>Info:</strong> You already have this country added!"
+                redirect "/countries/#{@user.countries.find_by_id(params["country_id"]).name}#add_fav"
+            end
         else
             redirect "/login"
         end

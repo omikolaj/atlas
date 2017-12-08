@@ -35,6 +35,10 @@ h5,
 h6 {
   font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif; }
 
+.flag{
+  padding: 30px;
+}
+
 h1.shadow{
   text-shadow: 0 0 50px #1c9e6c;
 }

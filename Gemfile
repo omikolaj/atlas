@@ -13,6 +13,7 @@ gem 'bcrypt'
 gem "tux"
 gem 'json'
 gem 'rest-client'
+gem 'sinatra-flash'
 
 group :test do
   gem 'rspec'
