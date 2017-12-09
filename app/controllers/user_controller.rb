@@ -1,5 +1,7 @@
 class UserController  < ApplicationController
 
+
+
     get '/dashboards/:slug' do
         if logged_in?
             @user = current_user
@@ -45,6 +47,18 @@ class UserController  < ApplicationController
             end
         else
             redirect "/login"
+        end
+    end
+
+    delete '/dashboards/:user_slug/remove/:country_slug' do
+        if logged_in?
+            @user = current_user
+            @country = @user.countries.find_by_slug(params["country_slug"])
+            @country.delete
+
+            redirect "/dashboards/#{@user.slug}"
+        else
+            redirect '/login'
         end
     end
 end

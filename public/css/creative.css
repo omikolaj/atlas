@@ -17,7 +17,7 @@ hr {
   border-color: #e8f040; }
 
 hr.light {
-  border-color: #fff; }
+  border-color: rgb(27, 192, 184); }
 
 a {
   color: rgb(0, 0, 0);
@@ -57,6 +57,13 @@ h1.shadow{
   width: 50%;
 }
 
+.navbar-header {
+  float: left;
+  text-align: center;
+  width: 100%;
+}
+.navbar-brand {float:none;}
+
 .topper{
   margin-top: 50px;
 }
@@ -93,21 +100,21 @@ section {
   margin-top: 0; }
 
 ::-moz-selection {
-  color: #fff;
+  color: rgb(27, 192, 184);
   background: #212529;
   text-shadow: none; }
 
 ::selection {
-  color: #fff;
+  color: rgb(27, 192, 184);
   background: #212529;
   text-shadow: none; }
 
 img::selection {
-  color: #fff;
+  color: rgb(27, 192, 184);
   background: transparent; }
 
 img::-moz-selection {
-  color: #fff;
+  color: rgb(27, 192, 184);
   background: transparent; }
 
 body {
@@ -115,7 +122,7 @@ body {
 
 #mainNav {
   border-bottom: 1px solid rgba(33, 37, 41, 0.1);
-  background-color: #fff;
+  background-color: rgb(27, 192, 184);
   font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
   -webkit-transition: all 0.2s;
   -moz-transition: all 0.2s;
@@ -150,7 +157,7 @@ body {
       #mainNav .navbar-brand {
         color: rgba(255, 255, 255, 0.7); }
         #mainNav .navbar-brand:focus, #mainNav .navbar-brand:hover {
-          color: #fff; }
+          color: rgb(27, 192, 184); }
       #mainNav .navbar-nav > li.nav-item > a.nav-link {
         padding: 0.5rem 1rem; }
       #mainNav .navbar-nav > li.nav-item > a.nav-link,
@@ -158,10 +165,10 @@ body {
         color: rgba(255, 255, 255, 0.7); }
         #mainNav .navbar-nav > li.nav-item > a.nav-link:hover,
         #mainNav .navbar-nav > li.nav-item > a.nav-link:focus:hover {
-          color: #fff; }
+          color: rgb(27, 192, 184); }
       #mainNav.navbar-shrink {
         border-bottom: 1px solid rgba(33, 37, 41, 0.1);
-        background-color: #fff; }
+        background-color: rgb(245, 245, 245); }
         #mainNav.navbar-shrink .navbar-brand {
           color: #F05F40; }
           #mainNav.navbar-shrink .navbar-brand:focus, #mainNav.navbar-shrink .navbar-brand:hover {
@@ -270,7 +277,7 @@ header.masthead {
   background-color: hsl(203, 57%, 46%);
   border-color: rgb(29, 167, 75); }
   .btn-primary:hover, .btn-primary:focus, .btn-primary:active {
-    color: #fff;
+    color: rgb(27, 192, 184);
     background-color: #76c370 !important; }
   .btn-primary:active, .btn-primary:focus {
     box-shadow: 0 0 0 0.2rem rgb(29, 167, 75) !important; }

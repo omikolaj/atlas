@@ -11,14 +11,19 @@
         <%@user.countries.each do |country|%>
           <div class="col-lg-3 col-sm-6 flag">
             <a class="portfolio-box" href="/countries/<%=country.slug%>">
-              <img class="img-fluid" src="/img/flags/<%=country.name%>.svg" alt="">
+              <img class="img-fluid" src="/img/flags/<%=country.name%>.svg" alt="Sorry, this image cannot be displayed">
               <div class="portfolio-box-caption circle">
                 <div class="portfolio-box-caption-content">
                   <div class="project-name">
                   </div>
                 </div>
               </div>
-            </a>
+             </a>
+             <h4 class="text-center"><%=country.name%></h4>
+            <form method="post" action="/dashboards/<%=@user.slug%>/remove/<%=country.slug%>">
+          <input type="hidden" name="_method" value="delete">
+          <input type="submit" value="Remove">
+          </form>
           </div>
         <%end%>
         </div>
