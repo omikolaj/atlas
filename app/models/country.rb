@@ -42,7 +42,7 @@ class Country < ActiveRecord::Base
     end
 
     def self.find_or_create_from_api(name)
-        find_by(name: name) || find_by_slug(name) || create_from_api_data(name)
+        find_by_slug(name) || create_from_api_data(name)
     end
 
     def self.create_flag_country_hash
