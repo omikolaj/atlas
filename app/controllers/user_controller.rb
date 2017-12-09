@@ -1,13 +1,11 @@
 class UserController  < ApplicationController
 
-
-
     get '/dashboards/:slug' do
         if logged_in?
             @user = current_user
             erb :"user/profile"
         else
-            redirect '/login'
+            redirect '/'
         end
     end
 
@@ -16,7 +14,7 @@ class UserController  < ApplicationController
             @user = current_user
             erb :'user/edit'
         else
-            redirect '/login'
+            redirect '/'
         end
     end
 
@@ -26,13 +24,13 @@ class UserController  < ApplicationController
             @user.update(:username => params["username"], :email => params["email"], :password => params["password"])
             redirect "/dashboards/#{@user.slug}"
         else
-            redirect '/login'
+            redirect '/'
         end
     end
 
     get '/logout' do
         logout!
-        redirect "/login"
+        redirect "/"
     end
 
     post '/dashboards/:user_slug/:country_id' do
@@ -46,7 +44,7 @@ class UserController  < ApplicationController
                 redirect "/countries/#{@user.countries.find_by_id(params["country_id"]).name}#add_fav"
             end
         else
-            redirect "/login"
+            redirect "/"
         end
     end
 
@@ -58,7 +56,7 @@ class UserController  < ApplicationController
 
             redirect "/dashboards/#{@user.slug}"
         else
-            redirect '/login'
+            redirect '/'
         end
     end
 end

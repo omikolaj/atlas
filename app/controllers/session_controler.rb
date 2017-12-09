@@ -24,7 +24,8 @@ class SessionController < ApplicationController
             login(@user.email)
             redirect to '/countries'
         else
-            redirect '/login'
+            flash[:danger] = "<strong>You have entered incorrect information"
+            redirect '/'
         end
     end
 

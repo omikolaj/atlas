@@ -12,9 +12,12 @@ body {
   font-family: 'Merriweather', 'Helvetica Neue', Arial, sans-serif; }
 
 hr {
-  max-width: 50px;
   border-width: 3px;
-  border-color: #e8f040; }
+  border-color: #98c9e1b0;
+  width: auto;
+}
+
+.i-am-centered { margin: auto; max-width: ;}
 
 hr.light {
   border-color: rgb(27, 192, 184); }
@@ -36,17 +39,26 @@ h6 {
   font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif; }
 
 .flag{
-  padding: 30px;
+  padding: 50px;
 }
 
 h1.shadow{
   text-shadow: 0 0 50px #1c9e6c;
 }
 
+.shadow-sm{
+  text-shadow: 0 0 35px #0a0429;
+}
+
 .edit_logo{
   background-image: url("/img/extra/1.jpg");
   background-repeat: no-repeat round;
   background-color: #00000c;
+}
+
+.country-title{
+  height: 80px;
+  margin-top: 25px;
 }
 
 .circle{
@@ -68,6 +80,18 @@ h1.shadow{
   margin-top: 50px;
 }
 
+.extra-style{
+  padding-bottom: 20px;
+  background-color: #ffffff7c;
+  color: #00000c;
+}
+
+.jumbotron {
+  color: inherit;
+  background-color: #eeeeee9c;
+  margin-top: 60px;
+}
+
 .api_flag{
   padding-bottom: 50px;
 }
@@ -77,7 +101,8 @@ h1.shadow{
 }
 
 #github{
-  margin-top: 80px;
+    margin-top: 80px;
+    margin-bottom: 30px;
 }
 
 #contact{
@@ -91,7 +116,7 @@ h1.shadow{
   background-color: #212529 !important; }
 
 .text-faded {
-  color: rgba(255, 255, 255, 0.7); }
+  color: rgb(255, 255, 255); }
 
 section {
   padding: 8rem 0; }
@@ -122,7 +147,7 @@ body {
 
 #mainNav {
   border-bottom: 1px solid rgba(33, 37, 41, 0.1);
-  background-color: rgb(27, 192, 184);
+  background-color: rgb(252, 252, 252);
   font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
   -webkit-transition: all 0.2s;
   -moz-transition: all 0.2s;
@@ -168,7 +193,7 @@ body {
           color: rgb(27, 192, 184); }
       #mainNav.navbar-shrink {
         border-bottom: 1px solid rgba(33, 37, 41, 0.1);
-        background-color: rgb(245, 245, 245); }
+        background-color: rgba(0, 0, 0, 0); }
         #mainNav.navbar-shrink .navbar-brand {
           color: #F05F40; }
           #mainNav.navbar-shrink .navbar-brand:focus, #mainNav.navbar-shrink .navbar-brand:hover {
@@ -275,9 +300,10 @@ header.masthead {
 
 .btn-primary {
   background-color: hsl(203, 57%, 46%);
-  border-color: rgb(29, 167, 75); }
+  border-color: #7bd1e9; }
   .btn-primary:hover, .btn-primary:focus, .btn-primary:active {
-    color: rgb(27, 192, 184);
-    background-color: #76c370 !important; }
+    color: #7bd1e9;
+    background-color: #ffffff !important; }
   .btn-primary:active, .btn-primary:focus {
-    box-shadow: 0 0 0 0.2rem rgb(29, 167, 75) !important; }
+    box-shadow: 0 0 0 0.2rem #7bd1e9 !important;
+    color: #7bd1e9 !important; }
