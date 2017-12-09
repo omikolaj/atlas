@@ -1,46 +1,31 @@
-    <section class="bg-info text-white">
+    <section class="text-white edit_logo">
       <div class="container text-center">
         <h2 class="mb-4"></h2>
         <a class="btn btn-light btn-xl sr-button" href="/dashboards/<%=@user.slug%>/edit">Edit Your Profile</a>
       </div>
     </section>
-    
-  <div class="card-group">
-  <div class="card">
-  <%@user.countries.each do |country|%>
-    <img class="card-img-top" src="/img/flags/<%=country.name%>.svg" alt="Card image cap">
-    <%end%>
-    <div class="card-block">
-      <h4 class="card-title">Card title</h4>
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-    </div>
-    <div class="card-footer">
-      <small class="text-muted">Last updated 3 mins ago</small>
-    </div>
-  </div>
 
-  <div class="card">
-    <img class="card-img-top" src="..." alt="Card image cap">
-    <div class="card-block">
-      <h4 class="card-title">Card title</h4>
-      <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-    </div>
-    <div class="card-footer">
-      <small class="text-muted">Last updated 3 mins ago</small>
-    </div>
-  </div>
+ <section class="p-0" id="portfolio">
+      <div class="container">
+        <div class="row" id="room">
+        <%@user.countries.each do |country|%>
+          <div class="col-lg-3 col-sm-6 flag">
+            <a class="portfolio-box" href="/countries/<%=country.slug%>">
+              <img class="img-fluid" src="/img/flags/<%=country.name%>.svg" alt="">
+              <div class="portfolio-box-caption circle">
+                <div class="portfolio-box-caption-content">
+                  <div class="project-name">
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        <%end%>
+        </div>
+      </div>
+    </section>
 
-  <div class="card">
-    <img class="card-img-top" src="..." alt="Card image cap">
-    <div class="card-block">
-      <h4 class="card-title">Card title</h4>
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-    </div>
-    <div class="card-footer">
-      <small class="text-muted">Last updated 3 mins ago</small>
-    </div>
-  </div>
-</div>
+
 
 
     

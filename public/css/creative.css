@@ -43,6 +43,24 @@ h1.shadow{
   text-shadow: 0 0 50px #1c9e6c;
 }
 
+.edit_logo{
+  background-image: url("/img/extra/1.jpg");
+  background-repeat: no-repeat round;
+  background-color: #00000c;
+}
+
+.circle{
+  border-radius: 50%;
+}
+
+.flag-size{
+  width: 50%;
+}
+
+.topper{
+  margin-top: 50px;
+}
+
 .api_flag{
   padding-bottom: 50px;
 }
