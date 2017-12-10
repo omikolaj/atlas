@@ -55,10 +55,9 @@ class Country < ActiveRecord::Base
         @api_countries ||= Country.populate_data_from_api
         @api_countries.map do |api_country|
            if country_names.include?(api_country["name"])
-                create_from_api_data(api_country)
-           end
+                
+          end
         end
         all
-    end
-    
+    end    
 end
