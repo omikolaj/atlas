@@ -11,7 +11,6 @@ class CountryController < ApplicationController
 
     get '/countries/:country' do
         if logged_in?
-            binding.pry
             @country = Country.find_or_create_from_api(params["country"])
             @current_user = current_user
             erb :"country/show"

@@ -23,7 +23,7 @@ class Country < ActiveRecord::Base
         country.topLevelDomain = data[0]["topLevelDomain"]
         country.alpha2Code = data[0]["alpha2Code"]
         country.alpha3Code = data[0]["alpha3Code"]
-        country.callingCodes = data[0]["callingCodes"]
+        country.callingCodes = data[0]["callingCodes"].join.to_i
         country.capital = data[0]["capital"]
         country.region = data[0]["region"]
         country.subregion = data[0]["subregion"]
@@ -38,10 +38,12 @@ class Country < ActiveRecord::Base
         country.language_name = data[0]["languages"][0]["name"]
         country.flag_path = data[0]["flag"]
         country.save
+        
         country
     end
 
     def self.find_or_create_from_api(name)
+
         find_by_slug(name.slug) || create_from_api_data(name)
     end
 

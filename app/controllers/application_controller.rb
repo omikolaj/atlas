@@ -12,7 +12,7 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/" do
-    erb :welcome, :layout => :sessionlayout
+    erb :"session/welcome", :layout => :sessionlayout
   end
 
   helpers do

@@ -4,17 +4,17 @@
     <div class="row justify-content-lg-center">
         <div class="col-lg-4 col-lg-offset-4">
             <div class="form-control extra-style">
-                <label for="username">Username: </label>
+                <label class="labels-margin" for="username">Username: </label>
                 <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></span>
                 <input type="text" class="form-control" id="username" placeholder="Username" name="username">
                 </div>
-                <label for="email">Email: </label>
+                <label class="labels-margin" for="email">Email: </label>
                 <div class="input-group">
                 <span class="input-group-addon">@</span>
                 <input type="email" class="form-control" id="email" placeholder="Email" name="email">
                 </div>
-                <label for="password">Password: </label>
+                <label class="labels-margin" for="password">Password: </label>
                 <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-key" aria-hidden="true"></i></span>
                 <input type="password" class="form-control" id="password" placeholder="Password" name="password">
@@ -23,9 +23,16 @@
     </div>
 </div>
 </div>
-
-<div class="container">
+<div class="row justify-content-lg-center">
     <div class="col-xs- col-xs-offset-6 text-center">
+        <% flash.keys.each do |type| %>
+    <div class="alert alert-<%=type%> alert-dismissible fade show" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+      </button>
+      <%=flash[:danger]%>
+    </div>
+    <%end%>
             <br>
             <button type="submit" class="btn btn-primary btn-xl">Sign up &raquo;</button>
             <a class="btn btn-primary btn-xl" href="/">Cancel</a>

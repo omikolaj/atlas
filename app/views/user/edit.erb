@@ -5,18 +5,18 @@
 <div class="container topper">
     <div class="row justify-content-lg-center">
         <div class="col-lg-4 col-lg-offset-4">
-            <div class="form-control">
-                <label for="username">Username: </label>
+            <div class="form-control extra-style">
+                <label class="labels-margin" for="username">Username: </label>
                 <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></span>
                 <input type="text" class="form-control" id="username" placeholder="Username" name="username" value="<%=@user.username%>">
                 </div>
-                <label for="email">Email: </label>
+                <label class="labels-margin" for="email">Email: </label>
                 <div class="input-group">
                 <span class="input-group-addon">@</span>
                 <input type="email" class="form-control" id="email" placeholder="Email" name="email" value="<%=@user.email%>">
                 </div>
-                <label for="password">Password: </label>
+                <label class="labels-margin" for="password">Password: </label>
                 <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-key" aria-hidden="true"></i></span>
                 <input type="password" class="form-control" id="password" placeholder="Password" name="password">
@@ -29,8 +29,8 @@
 <div class="container">
     <div class="col-xs- col-xs-offset-6 text-center">
             <br>
-            <button type="submit" class="btn btn-primary">Update</button>
-            <a class="btn btn-primary" href="/dashboards/<%=@user.slug%>">Cancel</a>
+            <button type="submit" class="btn btn-primary btn-xl">Update</button>
+            <a class="btn btn-primary btn-xl" href="/dashboards/<%=@user.slug%>">Cancel</a>
 </form> 
     </div>
 </div>
