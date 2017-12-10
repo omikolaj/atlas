@@ -28,7 +28,7 @@ a {
   -moz-transition: all 0.2s;
   transition: all 0.2s; }
   a:hover {
-    color: #56de81; }
+    color: #000000; }
 
 h1,
 h2,
@@ -38,8 +38,12 @@ h5,
 h6 {
   font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif; }
 
-.flag{
+.user-flag{
   padding: 50px;
+}
+
+.flag{
+  padding: 25px;
 }
 
 h1.shadow{
@@ -51,9 +55,10 @@ h1.shadow{
 }
 
 .edit_logo{
-  background-image: url("/img/extra/1.jpg");
+  opacity: 0.9;
+  background-image: url("/img/extra/2.jpg");
   background-repeat: no-repeat round;
-  background-color: #00000c;
+  background-color: #0164bf;
 }
 
 .country-title{
@@ -100,9 +105,23 @@ h1.shadow{
   margin-top: 55px;
 }
 
+#github-welcome i{
+  margin-top: 80px;
+  margin-bottom: 30px;
+  color: rgb(255, 255, 255);
+}
+
+#github-welcome p{
+  color: rgb(255, 255, 255);
+}
+
+#github-welcome a:hover {
+  color: #ffffff; }
+
 #github{
     margin-top: 80px;
     margin-bottom: 30px;
+    color: rgb(0, 0, 0);
 }
 
 #contact{
@@ -302,8 +321,8 @@ header.masthead {
   background-color: hsl(203, 57%, 46%);
   border-color: #7bd1e9; }
   .btn-primary:hover, .btn-primary:focus, .btn-primary:active {
-    color: #7bd1e9;
-    background-color: #ffffff !important; }
+    color: #ffffff;
+    background-color: #82868c !important; }
   .btn-primary:active, .btn-primary:focus {
     box-shadow: 0 0 0 0.2rem #7bd1e9 !important;
-    color: #7bd1e9 !important; }
+    color: #ffffff !important; }
