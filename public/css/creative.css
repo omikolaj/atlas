@@ -50,6 +50,14 @@ h6 {
   color:#000000 !important
 }
 
+.alert-formatting{
+  margin-top: 25px;
+}
+
+.bottom-margin{
+  margin-bottom: 50px;
+}
+
 h1.shadow{
   text-shadow: 0 0 50px #1c9e6c;
 }
@@ -86,7 +94,7 @@ h1.shadow{
 .navbar-brand {float:none;}
 
 .topper{
-  margin-top: 50px;
+  margin-top: 20px;
 }
 
 .profile-edit.btn-light:hover{
@@ -172,6 +180,10 @@ border-color: #7bd1e9;
 
 section {
   padding: 0rem 0; }
+
+.edit-bar{
+  padding: 5.5rem;
+}
 
 .section-heading {
   margin-top: 0; }

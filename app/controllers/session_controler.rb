@@ -14,7 +14,7 @@ class SessionController < ApplicationController
             login(@user.email)
             redirect "/countries"
         else
-            flash[:danger] = "This user has already been taken"
+            flash[:danger] = "Something went wrong..."
             redirect '/signup'
         end
     end
