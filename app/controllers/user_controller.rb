@@ -41,7 +41,7 @@ class UserController  < ApplicationController
                 redirect "/dashboards/#{@user.slug}"
             rescue
                 flash[:info] = "<strong>Info:</strong> You already have this country added!"
-                redirect "/countries/#{@user.countries.find_by_id(params["country_id"]).name}#add_fav"
+                redirect "/countries/#{@user.countries.find_by_id(params["country_id"]).slug}#add_fav"
             end
         else
             redirect "/"

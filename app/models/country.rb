@@ -3,55 +3,29 @@ class Country < ActiveRecord::Base
     has_many :users, through: :user_countries
     validates :name, presence: true, uniqueness: { case_sensitive: false }
     
-    @@matches = []
-    @@mis = []
-
-    def self.matches
-        @@matches.empty? ? Country.worker : @@matches
-    end
-
-
-    def self.mis
-        @@mis
-    end
-
-    def self.create_from_api_data(name)
-        path = URI.encode("https://restcountries.eu/rest/v2/name/#{name}?fullText=true")
-        data = JSON.parse(RestClient.get(path, headers={}))
-        country = Country.create
-        country.name = name
-        country.topLevelDomain = data[0]["topLevelDomain"]
-        country.alpha2Code = data[0]["alpha2Code"]
-        country.alpha3Code = data[0]["alpha3Code"]
-        country.callingCodes = data[0]["callingCodes"].join.to_i
-        country.capital = data[0]["capital"]
-        country.region = data[0]["region"]
-        country.subregion = data[0]["subregion"]
-        country.demonym = data[0]["demonym"]
-        country.area = data[0]["area"]
-        country.timezones = data[0]["timezones"]
-        country.borders = data[0]["borders"]
-        country.nativeName = data[0]["nativeName"]
-        country.currency_name = data[0]["nativeName"]
-        country.currency_symbol = data[0]["currencies"][0]["symbol"]
-        country.native_lang_name = data[0]["languages"][0]["nativeName"]
-        country.language_name = data[0]["languages"][0]["name"]
-        country.flag_path = data[0]["flag"]
+    def self.create_from_api_data(data)
+        country = self.create
+        country.name = data["name"]
+        country.topLevelDomain = data["topLevelDomain"]
+        country.alpha2Code = data["alpha2Code"]
+        country.alpha3Code = data["alpha3Code"]
+        country.callingCodes = data["callingCodes"]
+        country.capital = data["capital"]
+        country.region = data["region"]
+        country.subregion = data["subregion"]
+        country.demonym = data["demonym"]
+        country.area = data["area"]
+        country.timezones = data["timezones"]
+        country.borders = data["borders"]
+        country.nativeName = data["nativeName"]
+        country.currency_name = data["nativeName"]
+        country.currency_symbol = data["currencies"][0]["symbol"]
+        country.native_lang_name = data["languages"][0]["nativeName"]
+        country.language_name = data["languages"][0]["name"]
+        country.flag_path = data["flag"]
         country.save
-        
         country
     end
-
-    def self.find_or_create_from_api(name)
-
-        find_by_slug(name.slug) || create_from_api_data(name)
-    end
-
-    def self.create_flag_country_hash
-        country_flags = {}
-        Country.matches.map{|country_name| country_flags[:"#{country_name}"] = "public/img/flags/#{country_name}.svg"}
-    end
-
 
     def self.country_names
         path = "public/img/flags/"
@@ -73,20 +47,18 @@ class Country < ActiveRecord::Base
         data = JSON.parse(RestClient.get(path, headers={}))
     end
     
-
-    def self.filter
-        Country.country_names.each{|country| Country.matches?(country) ? @@matches << country : @@mis << country}
+    def self.load
+        Country.all.empty? ? matches? : all
     end
 
-    def self.worker
-        Country.filter
-        @@matches.sort{|a,b| a<=>b}
-    end
-    
-
-    def self.matches?(country)
+    def self.matches?
         @api_countries ||= Country.populate_data_from_api
-        @api_countries.map{|country| country["name"]}.any?{|api| api.include?(country)}       
+        @api_countries.map do |api_country|
+           if country_names.include?(api_country["name"])
+                create_from_api_data(api_country)
+           end
+        end
+        all
     end
     
 end

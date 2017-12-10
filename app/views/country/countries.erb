@@ -1,31 +1,26 @@
 <div class="container">
-<div class="jumbotron jumbotron-country text-center">
-  <h1 class="display-3">Hello, world!</h1>
-  <p class="lead">Select a country you would like more information about. You can add countries to your favorites.</p>
-  <hr class="my-4">
-  <p>Can you guess the name of the country by looking at the flags?</p>
+	<div class="jumbotron jumbotron-country text-center">
+		<h1 class="display-3">Hello, world!</h1>
+		<p class="lead">Select a country you would like more information about. You can add countries to your favorites.</p>
+		<hr class="my-4">
+			<p>Can you guess the name of the country by looking at the flags?</p>
+	</div>
 </div>
-</div>
-
-
-
- <section class="p-0" id="portfolio">
-      <div class="container">
-        <div class="row" id="room">
-        <%@flags.each do |flag|%>
-          <div class="col-lg-3 col-sm-6 flag">
-            <a class="portfolio-box" href="/countries/<%=flag%>">
-              <img class="img-fluid" src="/img/flags/<%=flag%>.svg" alt="">
-              <div class="portfolio-box-caption circle">
-                <div class="portfolio-box-caption-content">
-                  <div class="project-name">
-                    <%="#{flag}"%>
-                  </div>
-                </div>
-              </div>
-            </a>
-          </div>
-          <%end%>
-        </div>
-      </div>
-    </section>
+	<section class="p-0" id="portfolio">
+		<div class="container">
+			<div class="row" id="room"><%@flags.each do |flag|%>
+				<div class="col-lg-3 col-sm-6 flag">
+					<a class="portfolio-box" href="/countries/<%=flag.slug%>">
+						<img class="img-fluid" src="/img/flags/<%=flag.name%>.svg" alt="">
+							<div class="portfolio-box-caption circle">
+								<div class="portfolio-box-caption-content">
+									<div class="project-name"><%="#{flag.name}"%>
+									</div>
+								</div>
+							</div>
+						</a>
+					</div>
+					<%end%>
+				</div>
+			</div>
+		</section>
