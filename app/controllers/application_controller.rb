@@ -11,10 +11,6 @@ class ApplicationController < Sinatra::Base
     register Sinatra::Flash
   end
 
-  get "/" do
-    erb :"session/welcome", :layout => :sessionlayout
-  end
-
   helpers do
 
     def current_user

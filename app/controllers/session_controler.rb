@@ -19,8 +19,7 @@ class SessionController < ApplicationController
         end
     end
 
-    post '/login' do
-        binding.pry
+    post '/' do
         @user = User.find_by(:username => params["username"])
         if @user && @user.authenticate(params["password"])
             login(@user.email)
@@ -31,11 +30,11 @@ class SessionController < ApplicationController
         end
     end
 
-    get '/login' do
+    get '/' do
         if logged_in?
             redirect '/countries'
         else
-            erb :"session/login", :layout => :sessionlayout
+            erb :"session/welcome", :layout => :sessionlayout
         end
     end
 end
