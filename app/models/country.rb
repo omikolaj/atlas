@@ -37,7 +37,7 @@ class Country < ActiveRecord::Base
     end
     
     def self.find_by_slug(slug)
-        Country.all.find{|country| country.slug == slug}
+        all.find{|country| country.slug == slug}
     end
 
     private
@@ -48,11 +48,11 @@ class Country < ActiveRecord::Base
     end
     
     def self.load
-        Country.all.empty? ? matches? : all
+        all.empty? ? matches? : all
     end
 
     def self.matches?
-        @api_countries ||= Country.populate_data_from_api
+        @api_countries ||= populate_data_from_api
         @api_countries.map do |api_country|
            if country_names.include?(api_country["name"])
                create_from_api_data(api_country)

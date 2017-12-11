@@ -5,6 +5,12 @@ class User < ActiveRecord::Base
     validates :username, presence: true, uniqueness: { case_sensitive: false }
     validates :email, presence: true, uniqueness: { case_sensitive: false }
     validates :password, presence: true
+    before_save :downcase_fields
+
+    def downcase_fields
+        self.username.downcase!
+        self.email.downcase!
+    end
 
     def slug 
         username.downcase.gsub(" ","-")
