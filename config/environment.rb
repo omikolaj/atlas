@@ -9,7 +9,7 @@ Bundler.require(:default, ENV['SINATRA_ENV'])
 #)
 
 configure :production do
-  db = URI.parse(ENV['DATABASE_URL'] || 'postgres:///localhost/pokemon')
+  db = URI.parse(ENV['DATABASE_URL'] || 'postgres:///localhost/atlas')
  
   ActiveRecord::Base.establish_connection(
     :adapter  => db.scheme == 'postgres' ? 'postgresql' : db.scheme,
