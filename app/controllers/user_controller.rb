@@ -58,6 +58,9 @@ class UserController  < ApplicationController
             if @country = @user.countries.find_by(:name => params["country_name"])
                 @user.countries.delete(@user.countries.find_by(:name => params["country_name"]))
                 redirect "/dashboards/#{@user.slug}"
+            else
+                flash[:info] = "You no longer have this country in your favorites"
+                redirect "/dashboards/#{@user.slug}"
             end
         else
             redirect '/'
