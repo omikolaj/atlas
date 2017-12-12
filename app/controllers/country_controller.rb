@@ -3,7 +3,6 @@ class CountryController < ApplicationController
     get '/countries' do
         if logged_in?
             @flags ||= Country.load
-            binding.pry
             erb :"country/countries"
         else
             redirect '/'

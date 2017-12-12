@@ -55,8 +55,10 @@ class UserController  < ApplicationController
     delete '/dashboards/:user_slug/remove/:country_name' do
         if logged_in?
             @user = current_user
-            @user.countries.delete(@user.countries.find{|country| country.name = params["country_name"]})
-            redirect "/dashboards/#{@user.slug}"
+            if @country = @user.countries.find_by(:name => params["country_name"])
+                @user.countries.delete(@user.countries.find_by(:name => params["country_name"]))
+                redirect "/dashboards/#{@user.slug}"
+            end
         else
             redirect '/'
         end
