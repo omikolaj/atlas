@@ -17,7 +17,7 @@ hr {
   width: auto;
 }
 
-.i-am-centered { margin: auto; max-width: ;}
+.i-am-centered { margin: auto;}
 
 hr.light {
   border-color: rgb(27, 192, 184); }

@@ -21,8 +21,12 @@ class UserController  < ApplicationController
     patch '/dashboards/:slug' do
         if logged_in?
             @user = current_user
-            @user.update(:username => params["username"], :email => params["email"], :password => params["password"])
-            redirect "/dashboards/#{@user.slug}"
+            if @user.update(:username => params["username"], :email => params["email"], :password => params["password"])
+                redirect "/dashboards/#{@user.slug}"
+            else
+                flash[:danger] = "Something went wrong..."
+                redirect "/dashboards/#{@user.slug}/edit"
+            end
         else
             redirect '/'
         end
@@ -48,12 +52,10 @@ class UserController  < ApplicationController
         end
     end
 
-    delete '/dashboards/:user_slug/remove/:country_slug' do
+    delete '/dashboards/:user_slug/remove/:country_name' do
         if logged_in?
             @user = current_user
-            @country = @user.countries.find_by_slug(params["country_slug"])
-            @country.delete
-
+            @user.countries.delete(@user.countries.find{|country| country.name = params["country_name"]})
             redirect "/dashboards/#{@user.slug}"
         else
             redirect '/'

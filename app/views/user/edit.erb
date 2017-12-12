@@ -31,6 +31,17 @@
             <br>
             <button type="submit" class="btn btn-primary btn-xl">Update</button>
             <a class="btn btn-primary btn-xl" href="/dashboards/<%=@user.slug%>">Cancel</a>
+            <br>
 </form> 
+
+<% flash.keys.each do |type| %>
+
+        <div class="alert alert-<%=type%> alert-dismissible fade show alert-formatting" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+            <%=flash[:danger]%>
+        </div>
+        <%end%>
     </div>
 </div>

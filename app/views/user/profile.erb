@@ -21,7 +21,7 @@
              <div class="country-title">
              <h4 class="text-center"><%=country.name%></h4>
              </div>
-            <form method="post" action="/dashboards/<%=@user.slug%>/remove/<%=country.slug%>">
+            <form method="post" action="/dashboards/<%=@user.slug%>/remove/<%=country.name%>">
           <input type="hidden" name="_method" value="delete">
           <input type="submit" class="btn btn-primary btn-xl js-scroll-trigger" value="Remove">
           </form>
