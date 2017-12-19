@@ -1,4 +1,4 @@
-<form method="post" action="/dashboards/<%=@user.slug%>">
+<form method="post" action="/dashboards/<%=current_user.slug%>">
 <input type="hidden" name="_method" value="patch">
 <br><br>
 
@@ -9,12 +9,12 @@
                 <label class="labels-margin" for="username">Username: </label>
                 <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></span>
-                <input type="text" class="form-control" id="username" placeholder="Username" name="username" value="<%=@user.username%>">
+                <input type="text" class="form-control" id="username" placeholder="Username" name="username" value="<%=current_user.username%>">
                 </div>
                 <label class="labels-margin" for="email">Email: </label>
                 <div class="input-group">
                 <span class="input-group-addon">@</span>
-                <input type="email" class="form-control" id="email" placeholder="Email" name="email" value="<%=@user.email%>">
+                <input type="email" class="form-control" id="email" placeholder="Email" name="email" value="<%=current_user.email%>">
                 </div>
                 <label class="labels-margin" for="password">Password: </label>
                 <div class="input-group">
@@ -30,7 +30,7 @@
     <div class="col-xs- col-xs-offset-6 text-center">
             <br>
             <button type="submit" class="btn btn-primary btn-xl">Update</button>
-            <a class="btn btn-primary btn-xl" href="/dashboards/<%=@user.slug%>">Cancel</a>
+            <a class="btn btn-primary btn-xl" href="/dashboards/<%=current_user.slug%>">Cancel</a>
             <br>
 </form> 
 

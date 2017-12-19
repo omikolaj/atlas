@@ -2,7 +2,6 @@ class UserController  < ApplicationController
 
     get '/dashboards/:slug' do
         if logged_in?
-            @user = current_user
             erb :"user/profile"
         else
             redirect '/'
@@ -11,7 +10,6 @@ class UserController  < ApplicationController
 
     get '/dashboards/:slug/edit' do
         if logged_in?
-            @user = current_user
             erb :'user/edit'
         else
             redirect '/'
@@ -20,32 +18,30 @@ class UserController  < ApplicationController
 
     patch '/dashboards/:slug' do
         if logged_in?
-            @user = current_user
-            if @user.update(:username => params["username"], :email => params["email"], :password => params["password"])
-                redirect "/dashboards/#{@user.slug}"
+            if current_user.update(:username => params["username"], :email => params["email"], :password => params["password"])
+                redirect "/dashboards/#{current_user.slug}"
             else
                 flash[:danger] = "Something went wrong..."
-                redirect "/dashboards/#{@user.slug}/edit"
+                redirect "/dashboards/#{current_user.slug}/edit"
             end
         else
             redirect '/'
         end
     end
 
-    get '/logout' do
-        logout!
-        redirect "/"
-    end
-
     post '/dashboards/:user_slug/:country_id' do
         if logged_in?
-            @user = User.find_by_slug(params["user_slug"])
-            begin 
-                @user.countries << Country.find_by_id(params["country_id"])
-                redirect "/dashboards/#{@user.slug}"
-            rescue
-                flash[:info] = "<strong>Info:</strong> You already have this country added!"
-                redirect "/countries/#{@user.countries.find_by_id(params["country_id"]).slug}#add_fav"
+            if @country = Country.find_by_id(params["country_id"])
+                if !current_user.countries.includes?(@country)
+                    current_user.countries << @country
+                    redirect "/dashboards/#{current_user.slug}"
+                else 
+                    flash[:info] = "<strong>Info:</strong> You already have this country added!"
+                    redirect "/countries/#{current_user.countries.find_by_id(params["country_id"]).slug}#add_fav"
+                end
+            else 
+                flash[:info] = "<strong>Info:</strong> Can't find country you selected!"
+                redirect "/countries"
             end
         else
             redirect "/"
@@ -54,13 +50,12 @@ class UserController  < ApplicationController
 
     delete '/dashboards/:user_slug/remove/:country_name' do
         if logged_in?
-            @user = current_user
-            if @country = @user.countries.find_by(:name => params["country_name"])
-                @user.countries.delete(@user.countries.find_by(:name => params["country_name"]))
-                redirect "/dashboards/#{@user.slug}"
+            if @country = current_user.countries.find_by(:name => params["country_name"])
+                @user.countries.delete(current_user.countries.find_by(:name => params["country_name"]))
+                redirect "/dashboards/#{current_user.slug}"
             else
                 flash[:info] = "You no longer have this country in your favorites"
-                redirect "/dashboards/#{@user.slug}"
+                redirect "/dashboards/#{current_user.slug}"
             end
         else
             redirect '/'
