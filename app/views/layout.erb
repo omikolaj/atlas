@@ -51,7 +51,10 @@
               <a class="nav-link js-scroll-trigger" href="/dashboards/<%=current_user.slug%>">Dashboard</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="/logout">Logout</a>    
+              <form method="post" action="/logout" >
+                <input type="hidden" name="_method" value="delete"></input>
+                <button id="logout-button" class="nav-link js-scroll-trigger">Logout</button>
+              </form>
             </li>
           </ul>
         </div>

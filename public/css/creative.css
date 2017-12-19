@@ -97,6 +97,23 @@ h1.shadow{
   margin-top: 20px;
 }
 
+button#logout-button.nav-link.js-scroll-trigger{
+  background-color: Transparent;
+  border: none;
+  color: #212529;
+  font-size: .9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+button#logout-button.nav-link.js-scroll-trigger:hover{
+  color: #1a57a9;
+  cursor:pointer;
+}
+
+button#logout-button.nav-link.js-scroll-trigger:focus{
+  outline: 0;
+}
+
 .profile-edit.btn-light:hover{
   background-color: #82868c !important;
   color: #000000;
