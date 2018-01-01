@@ -2,6 +2,7 @@ class UserController  < ApplicationController
 
     get '/dashboards/:slug' do
         if logged_in?
+            @user = current_user
             erb :"user/profile"
         else
             redirect '/'
@@ -32,7 +33,7 @@ class UserController  < ApplicationController
     post '/dashboards/:user_slug/:country_id' do
         if logged_in?
             if @country = Country.find_by_id(params["country_id"])
-                if !current_user.countries.includes?(@country)
+                if !current_user.countries.include?(@country)
                     current_user.countries << @country
                     redirect "/dashboards/#{current_user.slug}"
                 else 
@@ -51,7 +52,7 @@ class UserController  < ApplicationController
     delete '/dashboards/:user_slug/remove/:country_name' do
         if logged_in?
             if @country = current_user.countries.find_by(:name => params["country_name"])
-                @user.countries.delete(current_user.countries.find_by(:name => params["country_name"]))
+                current_user.countries.delete(current_user.countries.find_by(:name => params["country_name"]))
                 redirect "/dashboards/#{current_user.slug}"
             else
                 flash[:info] = "You no longer have this country in your favorites"

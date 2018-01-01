@@ -11,7 +11,7 @@ class SessionController < ApplicationController
     post '/signup' do
         @user = User.new(:username => params["username"], :password => params["password"], :email => params["email"])
         if @user.save
-            session[:user_id] = user.id
+            session[:user_id] = @user.id
             redirect "/countries"
         else
             flash[:danger] = "Something went wrong..."
