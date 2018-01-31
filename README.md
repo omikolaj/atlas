@@ -8,7 +8,7 @@ https://restcountries.eu/
 
 ## Usage
 
-Atlas has been deployed to Heroku. It can be found at www.atlas-globe.herokuapp.com
+Atlas has been deployed to Heroku. It can be found at http://atlas-globe.herokuapp.com
 
 After cloning the repo run 'bundle install'
 
