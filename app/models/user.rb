@@ -7,6 +7,15 @@ class User < ActiveRecord::Base
     validates :password, presence: true
     before_save :downcase_fields
 
+
+    def self.find_or_create_guest
+        self.where(:username => "robertgreene").first_or_create do |guest|
+            guest.username = "robertgreene"
+            guest.password = SecureRandom.hex
+            guest.email = "robert.greene@gmail.com"
+        end
+    end
+
     def downcase_fields
         self.username.downcase!
         self.email.downcase!

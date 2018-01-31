@@ -38,6 +38,12 @@ class SessionController < ApplicationController
         end
     end
 
+    post '/guest' do
+        @user = User.find_or_create_guest
+        session[:user_id] = @user.id
+        redirect '/countries'
+    end
+
     delete '/logout' do
         session.clear
         redirect "/"
