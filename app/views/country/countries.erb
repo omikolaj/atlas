@@ -8,9 +8,9 @@
 </div>
 	<section class="p-0" id="portfolio">
 		<div class="container">
-			<div class="row" id="room"><%@flags.each do |flag|%>
-				<div class="col-lg-3 col-sm-3 flag">
-					<a class="portfolio-box" href="/countries/<%=flag.slug%>">
+			<div class="row justify-content-center" id="room"><%@flags.each do |flag|%>
+				<div class="col-lg-2 col-md-3 col-sm-4 col-4 flag">
+					<a class="portfolio-box text-center" href="/countries/<%=flag.slug%>">
 						<img class="img-fluid" src="/img/flags/<%=flag.name%>.svg" alt="no flag">
 							<div class="portfolio-box-caption circle">
 								<div class="portfolio-box-caption-content">
