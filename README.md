@@ -9,6 +9,10 @@ This project has been built using:
 - Bootstrap
 - RESTful api https://restcountries.eu/
 
+## Blog
+
+I wrote a blog about this project you can find it [here](http://omikolaj.com/sinatra_project_and_deployment_to_heroku)
+
 ## Usage
 
 Atlas has been deployed to Heroku. It can be found at http://atlas-globe.herokuapp.com. You do not have to signup for an account, you can just use the 'Login as gues' option.
