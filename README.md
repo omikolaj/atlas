@@ -1,8 +1,13 @@
 ## Description
 
-Atlas is a Sinatra web application that provides users with information about countries around the world. Atlas integrates a RESTful api that populates each country's details. Atlas also implements a custom login and signup flow. When user is logged in they are able to select a country/countries they like and add it to their favorites. In 'Dashboard' users can view the countries they have saved as well as edit their profile information. Atlas uses PostgreSQL database
+Atlas is a full MVC Sinatra web application that provides users with information about countries around the world. Atlas integrates a RESTful api that populates each country's details. Atlas implements a custom login and signup flow. When user is logged in they are able to select a country/countries they like and add it to their favorites. In 'Dashboard' users can view the countries they have saved as well as edit their profile information. Atlas uses PostgreSQL database
 
-RESTful api: https://restcountries.eu/
+This project has been built using:
+- Ruby
+- ActiveRecord
+- PostgreSQL
+- Bootstrap
+- RESTful api https://restcountries.eu/
 
 ## Usage
 
