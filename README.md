@@ -11,7 +11,7 @@ This project has been built using:
 
 ## Blog
 
-I wrote a blog about this project you can find it www.omiko.co/blog/sinatra-project-and-deployment-to-heroku
+I wrote a blog about this project you can find it at www.omiko.co/blog/sinatra-project-and-deployment-to-heroku
 
 ## Usage
 
